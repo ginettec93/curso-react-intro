@@ -1,24 +1,38 @@
 import logo from './platzi.webp';
 import './App.css';
+import { TaskCounter} from './task-counter';
+import { TaskSearch } from './task-search';
+import { TaskList } from './task-list';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edita el archivo <code>src/App.js</code> y guarda para recargar.
-        </p>
-        <a
-          className="App-link"
-          href="https://platzi.com/reactjs"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
+      <TaskCounter/>
+      <TaskSearch/>
+
+      <TaskList>
+          <TaskItem/> 
+          <TaskItem/> 
+          <TaskItem/> 
+          <TaskItem/> 
+          <TaskItem/> 
+          <TaskItem/> 
+      </TaskList>
+      
+      <CreateTaskButton/>
     </div>
+  );
+}
+
+function TaskItem() {
+  return(
+    <li>
+      <span>V</span>
+      <p>Study History</p>
+      <span>X</span>   
+    </li>
+
   );
 }
 
