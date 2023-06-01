@@ -20,7 +20,7 @@ function App() {
           <TaskItem/> 
       </TaskList>
       
-      <CreateTaskButton/>
+      
     </div>
   );
 }
