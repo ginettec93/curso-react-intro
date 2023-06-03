@@ -1,3 +1,5 @@
+import './task-counter.css';
+
 function TaskList(props) {
     return(
         <ul>

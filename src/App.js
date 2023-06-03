@@ -1,11 +1,9 @@
 import logo from './platzi.webp';
-import './App.css';
 import { TaskCounter} from './task-counter';
 import { TaskSearch } from './task-search';
 import { TaskList } from './task-list';
 import { TaskItem } from './task-item';
 import { CreateTaskButton } from './task-button';
-import React from 'react';
 
 const defaultTask = [
   {text:'Study Biology', completed: false},
@@ -17,7 +15,7 @@ const defaultTask = [
 
 function App() {
   return (
-    <React.Fragment>
+    <>
 
       <TaskCounter completed={10} total={20} />
       <TaskSearch/>
@@ -32,7 +30,7 @@ function App() {
       
       <CreateTaskButton/>
     
-    </React.Fragment>
+    </>
   );
 }
 

@@ -1,3 +1,5 @@
+import './task-counter.css';
+
 function TaskCounter({total, completed}) {
     return(
         <h1>
