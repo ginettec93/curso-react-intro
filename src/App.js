@@ -1,4 +1,3 @@
-import logo from './platzi.webp';
 import { TaskCounter} from './task-counter';
 import { TaskSearch } from './task-search';
 import { TaskList } from './task-list';

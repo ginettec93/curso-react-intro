@@ -1,10 +1,9 @@
 import './task-counter.css';
-import React, { useState } from 'react';
 
-function TaskCounter({totalTasks, completedTasks}) {
+function TaskCounter({total, completed}) {
     return(
         <h1>
-            You've completed {completedTasks} of {totalTasks} tasks!
+            You've completed {completed} of {total} tasks!
         </h1>
     );
 }
