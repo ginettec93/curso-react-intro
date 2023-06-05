@@ -4,6 +4,7 @@ import { TaskSearch } from './task-search';
 import { TaskList } from './task-list';
 import { TaskItem } from './task-item';
 import { CreateTaskButton } from './task-button';
+import React, { useState } from 'react';
 
 const defaultTask = [
   {text:'Study Biology', completed: false},
@@ -14,11 +15,18 @@ const defaultTask = [
 ];
 
 function App() {
+  const [tasks, setTasks] = React.useState(defaultTask);
+  const [searchValue, setSearchValue] = React.useState('');
+  console.log('Users are looking for ' + searchValue);
+
+  const completedTasks = tasks.filter(task => !!task.completed).length;
+  const totalTasks = tasks.length;
+  
   return (
     <>
 
-      <TaskCounter completed={10} total={20} />
-      <TaskSearch/>
+      <TaskCounter completed={completedTasks} total={totalTasks} />
+      <TaskSearch searchValue={searchValue} setSearchValue={setSearchValue} />
 
       <TaskList>
           {defaultTask.map(task => (<TaskItem 
