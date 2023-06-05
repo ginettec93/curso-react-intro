@@ -1,9 +1,11 @@
+import React, { useState } from 'react';
+
 function TaskSearch() {
+    const [searchValue, setSearchValue] = React.useState('');
+    console.log('Users are looking for ' + searchValue);
     return(
-        <input placeholder="Search your task" onChange={(event) => {
-            console.log(event)
-        console.log(event.target)
-    console.log(event.target.value)}}/>
+        <input placeholder="Search your task" value={searchValue} onChange={(event) => {
+            setSearchValue(event.target.value)}}/>
     );
 }
 
