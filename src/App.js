@@ -16,10 +16,26 @@ const defaultTask = [
 function App() {
   const [tasks, setTasks] = React.useState(defaultTask);
   const [searchValue, setSearchValue] = React.useState('');
-  console.log('Users are looking for ' + searchValue);
-
   const completedTasks = tasks.filter(task => !!task.completed).length;
   const totalTasks = tasks.length;
+ 
+  const completeTask = (text) => {
+    const newTasks = [...tasks];
+    const tasksIndex = newTasks.findIndex(
+      (task) => task.text == text
+    );
+    newTasks[tasksIndex].completed = true;
+    setTasks(newTasks);
+  };
+
+  const deleteTask = (text) => {
+    const newTasks = [...tasks];
+    const tasksIndex = newTasks.findIndex(
+      (task) => task.text == text
+    );
+    newTasks.splice(tasksIndex, 1);
+    setTasks(newTasks);
+  };
   
   return (
     <>
@@ -31,8 +47,11 @@ function App() {
           {defaultTask.map(task => (<TaskItem 
           key={task.text} 
           text={task.text}
-          completed={task.completed} />
+          completed={task.completed}
+          onComplete={ () => completeTask(task.text)}
+          onDelete={ () => deleteTask(task.text)} />
           ))} 
+          
       </TaskList>
       
       <CreateTaskButton/>
