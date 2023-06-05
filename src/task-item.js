@@ -3,8 +3,8 @@ import './task-counter.css';
 function TaskItem(props) {
     return(
     <li>
-        <span class="text_list">
-            <button class={`verified_button ${props.completed} && verified_button`}>V{props.completed}</button>{props.text}<button class="exit_button">X</button> 
+        <span className={`text_list ${props.completed} && text_list_completed`}>
+            <button className={`verified_button ${props.completed} && verified_button_completed`}>V{props.completed}</button>{props.text}<button className="exit_button">X</button> 
         </span>      
     </li>
     );

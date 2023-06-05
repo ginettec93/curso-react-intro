@@ -44,7 +44,10 @@ ul li {
     border-radius: 10px;
     border: none;
     text-align: center;
-    box-shadow: 4px 6px 10px rgba(83, 70, 30, 0.18);  
+    box-shadow: 0px 6px 10px rgba(83, 70, 30, 0.18);  
+}
+.text_list_completed {
+    text-decoration: line-through;
 }
 .verified_button {
     z-index: 2;
@@ -55,15 +58,30 @@ ul li {
     height: 20px;
     border: none;
     border-radius: 50%;
+    background-color: white;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+.verified_button_completed {
+    z-index: 3;
+    position: absolute;
+    left: 30px;
+    top: 10px;
+    width: 20px;
+    height: 20px;
+    border: none;
+    border-radius: 50%;
     background-color: palegreen;
     color: white;
     font-weight: bold;
+    cursor: pointer;
 }
 .exit_button {
     z-index: 3;
     position: absolute;
     right: 30px;
-    top: 10px;
+    top: -5px;
     width: 20px;
     height: 20px;
     border: none;
@@ -71,6 +89,7 @@ ul li {
     background-color: #fd6142;
     color: white;
     font-weight: bold;
+    cursor: pointer;
 }
 .add_button {
     position: absolute;
@@ -84,6 +103,7 @@ ul li {
     color: white;
     font-weight: bold;
     border: none;
+    cursor: pointer;
 }
 .add_button:hover {
     border: 1px solid #ffaacc;
