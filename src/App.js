@@ -10,19 +10,21 @@ const defaultTask = [
   {text:'Study Geometry', completed: true},
   {text:'Study Anatomy', completed: false},
   {text:'Study History', completed: false},
-  {text:'Study Psychology', completed: true}
+  {text:'Study Psychology', completed: true},
 ];
 
 function App() {
   const [tasks, setTasks] = React.useState(defaultTask);
   const [searchValue, setSearchValue] = React.useState('');
-  const completedTasks = tasks.filter(task => !!task.completed).length;
+  const completedTasks = tasks.filter(tasks => !!tasks.completed).length;
   const totalTasks = tasks.length;
- 
-  const completeTask = (text) => {
+  const searchedTasks=tasks.filter((tasks)=>{const tasksText=tasks.text.toLowerCase();
+    const searchText=searchValue.toLowerCase();return tasksText.includes(searchText);});
+  
+    const completeTask = (text) => {
     const newTasks = [...tasks];
     const tasksIndex = newTasks.findIndex(
-      (task) => task.text == text
+      (tasks) => tasks.text == text
     );
     newTasks[tasksIndex].completed = true;
     setTasks(newTasks);
@@ -31,7 +33,7 @@ function App() {
   const deleteTask = (text) => {
     const newTasks = [...tasks];
     const tasksIndex = newTasks.findIndex(
-      (task) => task.text == text
+      (tasks) => tasks.text == text
     );
     newTasks.splice(tasksIndex, 1);
     setTasks(newTasks);
@@ -44,12 +46,12 @@ function App() {
       <TaskSearch searchValue={searchValue} setSearchValue={setSearchValue} />
 
       <TaskList>
-          {defaultTask.map(task => (<TaskItem 
-          key={task.text} 
-          text={task.text}
-          completed={task.completed}
-          onComplete={ () => completeTask(task.text)}
-          onDelete={ () => deleteTask(task.text)} />
+          {searchedTasks.map(tasks => (<TaskItem 
+          key={tasks.text} 
+          text={tasks.text}
+          completed={tasks.completed}
+          onComplete={ () => completeTask(tasks.text)}
+          onDelete={ () => deleteTask(tasks.text)} />
           ))} 
           
       </TaskList>
