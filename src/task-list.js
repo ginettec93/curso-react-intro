@@ -1,9 +1,9 @@
 import './task-counter.css';
 
-function TaskList(props) {
+function TaskList({children}) {
     return(
-        <ul>
-            {props.children}
+        <ul className="Task_list">
+            {children}
         </ul>
     );
 }

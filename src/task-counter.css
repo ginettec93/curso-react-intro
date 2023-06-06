@@ -23,7 +23,7 @@ input {
 input:hover {
     border: 1px solid #ffaacc;
 }
-ul {
+.Task_list {
     display: grid;
     justify-content: center;
     text-align: justify;
@@ -31,9 +31,11 @@ ul {
 ul li {
     list-style: none;
 }
-.text_list {
-    display: grid;
+.TaskItem {
     position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     right: 15px;
     background-color: #ffddcc;
     margin-top: 10px;
@@ -43,55 +45,46 @@ ul li {
     height: 20px;
     border-radius: 10px;
     border: none;
-    text-align: center;
     box-shadow: 0px 6px 10px rgba(83, 70, 30, 0.18);  
 }
-.text_list_completed {
+.Text_list_completed {
     text-decoration: line-through;
 }
-.verified_button {
-    z-index: 2;
-    position: absolute;
-    left: 30px;
-    top: 10px;
-    width: 20px;
-    height: 20px;
-    border: none;
-    border-radius: 50%;
-    background-color: white;
-    color: white;
-    font-weight: bold;
+.Icon {
     cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20px;
+    height: 20px;
+    font-size: 24px;
+    color: white;
+    font-weight: 700;
 }
-.verified_button_completed {
-    z-index: 3;
+.Icon_check {
     position: absolute;
     left: 30px;
     top: 10px;
-    width: 20px;
-    height: 20px;
-    border: none;
+    border: 1px solid green;
     border-radius: 50%;
+}
+.Icon_check_active {
     background-color: palegreen;
-    color: white;
-    font-weight: bold;
-    cursor: pointer;
 }
-.exit_button {
-    z-index: 4;
+.Icon_delete {
     position: absolute;
     right: 30px;
     top: -8px;
     width: 20px;
     height: 20px;
-    border: none;
-    border-radius: 50%;
-    background-color: red;
     color: white;
     font-weight: bold;
     cursor: pointer;
 }
-.add_button {
+.Icon_delete:hover {
+    color: red;
+}
+.Add_button {
     position: absolute;
     right: 30px;
     background-color: #8BC6EC;

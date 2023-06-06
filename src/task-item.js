@@ -3,11 +3,10 @@ import './task-counter.css';
 
 function TaskItem(props) {
     return(
-    <li>
-        <span className={`text_list ${props.completed} && text_list_completed`}>
-            <button className={`verified_button ${props.completedTask} && verified_button_completed
-             `} onClick ={props.onComplete} >V{props.completedTask}</button>{props.text}<button className="exit_button" onClick={props.onDelete}>X</button> 
-        </span>      
+    <li className="TaskItem">
+    <span className={`Icon Icon_check ${props.completed && "Icon_check_active"}`} onClick={props.onComplete}>v</span> 
+    <p className={`Text_list ${props.completed && "Text_list_completed"}`}>{props.text}</p>
+    <span className= "Icon Icon_delete" onClick={props.onDelete}>x</span>       
     </li>
     );
 }
