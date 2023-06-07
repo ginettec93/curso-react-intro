@@ -1,5 +1,5 @@
 body {
-    background-image: url('./images/background.png');
+    background-image: url('./images/background1.png');
     font-family: 'Rubik', sans-serif;
 }
 h1 {
@@ -55,8 +55,8 @@ ul li {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 20px;
-    height: 20px;
+    width: 25px;
+    height: 25px;
     font-size: 24px;
     color: white;
     font-weight: 700;
@@ -65,7 +65,7 @@ ul li {
     position: absolute;
     left: 30px;
     top: 10px;
-    border: 1px solid green;
+    border: none;
     border-radius: 50%;
 }
 .Icon_check_active {
