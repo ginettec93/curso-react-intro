@@ -16,31 +16,33 @@ import React, { useState } from 'react';
 // localStorage.setItem('Tasks_V1', JSON.stringify(defaultTask));
 // localStorage.removeItem('Tasks_V1');
 
-function App() {
+function useLocalStorage(itemName, initialValue) {
 
-  const localStorageTasks = localStorage.getItem('Tasks_V1');
+  const localStorageItem = localStorage.getItem(itemName);
 
-  let parsedTasks;
+  let parsedItem;
 
-  if (!localStorageTasks) {
-    localStorage.setItem('Tasks_V1', JSON.stringify([]));
-    parsedTasks = [];
+  if (!localStorageItem) {
+    localStorage.setItem(itemName, JSON.stringify([initialValue]));
+    parsedItem = [initialValue];
   } else {
-    parsedTasks = JSON.parse(localStorageTasks);
+    parsedItem = JSON.parse(localStorageItem);
   }
+  const saveItem = (newItem) => {
+    localStorage.setItem(itemName, JSON.stringify(newItem));
+    setItem(newItem);
+  };
+  const [item, setItem] = React.useState(parsedItem);
 
+}
+
+function App() {
   const [tasks, setTasks] = React.useState(parsedTasks);
   const [searchValue, setSearchValue] = React.useState('');
   const completedTasks = tasks.filter(tasks => !!tasks.completed).length;
   const totalTasks = tasks.length;
   const searchedTasks=tasks.filter((tasks)=>{const tasksText=tasks.text.toLowerCase();
     const searchText=searchValue.toLowerCase();return tasksText.includes(searchText);});
-
-  
-    const saveTasks = (newTasks) => {
-      localStorage.setItem('Tasks_V1', JSON.stringify(newTasks));
-      setTasks(newTasks);
-    };
 
     const completeTask = (text) => {
     const newTasks = [...tasks];
