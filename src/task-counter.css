@@ -61,15 +61,29 @@ ul li {
     color: white;
     font-weight: 700;
 }
+.Icon:hover {
+    background-color: palegreen;
+}
 .Icon_check {
     position: absolute;
     left: 30px;
     top: 10px;
-    border: none;
+    border: 1px solid gray;
     border-radius: 50%;
 }
 .Icon_check_active {
-    background-color: palegreen;
+    background-color: lightseagreen;;
+}
+.Icon_x {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 25px;
+    height: 25px;
+    font-size: 24px;
+    color: white;
+    font-weight: 700;
 }
 .Icon_delete {
     position: absolute;

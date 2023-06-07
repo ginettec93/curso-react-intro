@@ -5,16 +5,24 @@ import { TaskItem } from './task-item';
 import { CreateTaskButton } from './task-button';
 import React, { useState } from 'react';
 
-const defaultTask = [
-  {text:'Study Biology', completed: false},
-  {text:'Study Geometry', completed: true},
-  {text:'Study Anatomy', completed: false},
-  {text:'Study History', completed: false},
-  {text:'Study Psychology', completed: true},
-];
+ // const defaultTask = [
+  //{text:'Study Biology', completed: false},
+ // {text:'Study Geometry', completed: true},
+  //{text:'Study Anatomy', completed: false},
+//  {text:'Study History', completed: false},
+ // {text:'Study Psychology', completed: true},
+//]; 
+
+// localStorage.setItem('Tasks_V1', defautlTask);
+// localStorage.removeItem('Tasks_V1');
 
 function App() {
-  const [tasks, setTasks] = React.useState(defaultTask);
+
+  const localStorageTasks = localStorage.getItem('Tasks_V1');
+
+  let parsedTasks = JSON.parse(localStorageTasks);
+
+  const [tasks, setTasks] = React.useState(parsedTasks);
   const [searchValue, setSearchValue] = React.useState('');
   const completedTasks = tasks.filter(tasks => !!tasks.completed).length;
   const totalTasks = tasks.length;
