@@ -13,14 +13,21 @@ import React, { useState } from 'react';
  // {text:'Study Psychology', completed: true},
 //]; 
 
-// localStorage.setItem('Tasks_V1', defautlTask);
+// localStorage.setItem('Tasks_V1', JSON.stringify(defaultTask));
 // localStorage.removeItem('Tasks_V1');
 
 function App() {
 
   const localStorageTasks = localStorage.getItem('Tasks_V1');
 
-  let parsedTasks = JSON.parse(localStorageTasks);
+  let parsedTasks;
+
+  if (!localStorageTasks) {
+    localStorage.setItem('Tasks_V1', JSON.stringify([]));
+    parsedTasks = [];
+  } else {
+    parsedTasks = JSON.parse(localStorageTasks);
+  }
 
   const [tasks, setTasks] = React.useState(parsedTasks);
   const [searchValue, setSearchValue] = React.useState('');
@@ -28,14 +35,20 @@ function App() {
   const totalTasks = tasks.length;
   const searchedTasks=tasks.filter((tasks)=>{const tasksText=tasks.text.toLowerCase();
     const searchText=searchValue.toLowerCase();return tasksText.includes(searchText);});
+
   
+    const saveTasks = (newTasks) => {
+      localStorage.setItem('Tasks_V1', JSON.stringify(newTasks));
+      setTasks(newTasks);
+    };
+
     const completeTask = (text) => {
     const newTasks = [...tasks];
     const tasksIndex = newTasks.findIndex(
       (tasks) => tasks.text == text
     );
     newTasks[tasksIndex].completed = true;
-    setTasks(newTasks);
+    saveTasks(newTasks);
   };
 
   const deleteTask = (text) => {
@@ -44,7 +57,7 @@ function App() {
       (tasks) => tasks.text == text
     );
     newTasks.splice(tasksIndex, 1);
-    setTasks(newTasks);
+    saveTasks(newTasks);
   };
   
   return (
