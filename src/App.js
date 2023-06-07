@@ -23,42 +23,48 @@ function useLocalStorage(itemName, initialValue) {
   let parsedItem;
 
   if (!localStorageItem) {
-    localStorage.setItem(itemName, JSON.stringify([initialValue]));
-    parsedItem = [initialValue];
+    localStorage.setItem(itemName, JSON.stringify(initialValue));
+    parsedItem = initialValue;
   } else {
     parsedItem = JSON.parse(localStorageItem);
   }
+  const [item, setItem] = React.useState(parsedItem);
+  
   const saveItem = (newItem) => {
     localStorage.setItem(itemName, JSON.stringify(newItem));
     setItem(newItem);
   };
-  const [item, setItem] = React.useState(parsedItem);
-
-}
+  
+  return [item, saveItem];
+};
 
 function App() {
-  const [tasks, setTasks] = React.useState(parsedTasks);
+  const [tasks, saveTasks] = useLocalStorage('Tasks_V1', []);
   const [searchValue, setSearchValue] = React.useState('');
-  const completedTasks = tasks.filter(tasks => !!tasks.completed).length;
+  
+  const completedTasks = tasks.filter(task => !!task.completed).length;
   const totalTasks = tasks.length;
-  const searchedTasks=tasks.filter((tasks)=>{const tasksText=tasks.text.toLowerCase();
-    const searchText=searchValue.toLowerCase();return tasksText.includes(searchText);});
+  
+  const searchedTasks = tasks.filter((task)=>{
+    const taskText = task.text.toLowerCase();
+    const searchText = searchValue.toLowerCase();
+    return taskText.includes(searchText);});
 
     const completeTask = (text) => {
     const newTasks = [...tasks];
-    const tasksIndex = newTasks.findIndex(
-      (tasks) => tasks.text == text
+    const taskIndex = newTasks.findIndex(
+      (task) => task.text == text
     );
-    newTasks[tasksIndex].completed = true;
+    newTasks[taskIndex].completed = true;
     saveTasks(newTasks);
   };
 
   const deleteTask = (text) => {
     const newTasks = [...tasks];
-    const tasksIndex = newTasks.findIndex(
-      (tasks) => tasks.text == text
+    const taskIndex = newTasks.findIndex(
+      (task) => task.text == text
     );
-    newTasks.splice(tasksIndex, 1);
+    newTasks.splice(taskIndex, 1);
     saveTasks(newTasks);
   };
   
@@ -69,7 +75,8 @@ function App() {
       <TaskSearch searchValue={searchValue} setSearchValue={setSearchValue} />
 
       <TaskList>
-          {searchedTasks.map(tasks => (<TaskItem 
+          {searchedTasks.map(tasks => (
+          <TaskItem 
           key={tasks.text} 
           text={tasks.text}
           completed={tasks.completed}
