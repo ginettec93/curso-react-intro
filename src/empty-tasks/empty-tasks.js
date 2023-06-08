@@ -1,5 +1,4 @@
 import React from 'react';
-import './empty-tasks.css'
 
 function EmptyTasks() {
     return(
