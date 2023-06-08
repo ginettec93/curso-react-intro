@@ -3,7 +3,13 @@ import './loading-tasks.css';
 
 function TasksLoading() {
     return(
-        <p>Loading...</p>
+        <section className='loading_page'> 
+            <div></div>
+            <div></div>
+            <div></div>
+        </section>
+
+        
     );
 }
 
