@@ -3,9 +3,9 @@ import { TaskCounter} from '../task-counter/task-counter';
 import { TaskSearch } from '../task-counter/task-search';
 import { TaskList } from '../task-counter/task-list';
 import { TaskItem } from '../task-counter/task-item';
-import { TasksLoading} from './loading-tasks';
-import { TasksError } from '/error-tasks';
-import { EmptyTasks } from './empty-tasks';
+import { TasksLoading} from '../loading-tasks/loading-tasks';
+import { TasksError } from '../error-tasks/tasks-error';
+import { EmptyTasks } from '../empty-tasks/empty-tasks';
 import { CreateTaskButton } from '../task-counter/task-button';
 
 // localStorage.removeItem('Tasks_V1');

@@ -1,5 +1,5 @@
 body {
-    background-image: url('./images/background1.png');
+    background-image: url('../images/background.png');
     font-family: 'Rubik', sans-serif;
 }
 h1 {
