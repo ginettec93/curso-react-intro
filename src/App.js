@@ -1,10 +1,11 @@
+import React from 'react';
 import { TaskCounter} from './task-counter';
 import { TaskSearch } from './task-search';
 import { TaskList } from './task-list';
 import { TaskItem } from './task-item';
 import { CreateTaskButton } from './task-button';
-import React, { useState } from 'react';
 
+// localStorage.removeItem('Tasks_V1');
  // const defaultTask = [
   //{text:'Study Biology', completed: false},
  // {text:'Study Geometry', completed: true},
@@ -14,32 +15,54 @@ import React, { useState } from 'react';
 //]; 
 
 // localStorage.setItem('Tasks_V1', JSON.stringify(defaultTask));
-// localStorage.removeItem('Tasks_V1');
+
 
 function useLocalStorage(itemName, initialValue) {
+  const [item, setItem] = React.useState(initialValue);
+  const [loading, setLoading] = React.useState(true);
+  const [error, setError] = React.useState(false);
 
-  const localStorageItem = localStorage.getItem(itemName);
+  React.useEffect( () => {
+    setTimeout( () => {
+      try {
+        const localStorageItem = localStorage.getItem(itemName);
+      let parsedItem;
+      
+      if (!localStorageItem) {
+        localStorage.setItem(itemName, JSON.stringify(initialValue));
+        parsedItem = initialValue;
+      } else {
+        parsedItem = JSON.parse(localStorageItem);
+      }
+      setItem(parsedItem);
+      setLoading(false);
+      } catch (error) {
+        setLoading(false);
+        setError(true);
+      }
+    }, 2000);
+  });
 
-  let parsedItem;
-
-  if (!localStorageItem) {
-    localStorage.setItem(itemName, JSON.stringify(initialValue));
-    parsedItem = initialValue;
-  } else {
-    parsedItem = JSON.parse(localStorageItem);
-  }
-  const [item, setItem] = React.useState(parsedItem);
-  
   const saveItem = (newItem) => {
     localStorage.setItem(itemName, JSON.stringify(newItem));
     setItem(newItem);
   };
   
-  return [item, saveItem];
+  return {
+    item, 
+    saveItem, 
+    loading, 
+    error,
+  };
 };
 
 function App() {
-  const [tasks, saveTasks] = useLocalStorage('Tasks_V1', []);
+  const  {
+    item: tasks, 
+    saveItem: saveTasks, 
+    loading, 
+    error,
+  } = useLocalStorage('Tasks_V1', []);
   const [searchValue, setSearchValue] = React.useState('');
   
   const completedTasks = tasks.filter(task => !!task.completed).length;
@@ -53,7 +76,7 @@ function App() {
     const completeTask = (text) => {
     const newTasks = [...tasks];
     const taskIndex = newTasks.findIndex(
-      (task) => task.text == text
+      (task) => task.text === text
     );
     newTasks[taskIndex].completed = true;
     saveTasks(newTasks);
@@ -62,7 +85,7 @@ function App() {
   const deleteTask = (text) => {
     const newTasks = [...tasks];
     const taskIndex = newTasks.findIndex(
-      (task) => task.text == text
+      (task) => task.text === text
     );
     newTasks.splice(taskIndex, 1);
     saveTasks(newTasks);
@@ -75,6 +98,10 @@ function App() {
       <TaskSearch searchValue={searchValue} setSearchValue={setSearchValue} />
 
       <TaskList>
+        {loading && <TasksLoading/>}
+        {error && <TasksError/>}
+        {(!loading && searchedTasks.length === 0) && <p>Create a New Task!</p>}
+          
           {searchedTasks.map(tasks => (
           <TaskItem 
           key={tasks.text} 
