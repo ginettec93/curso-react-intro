@@ -9,6 +9,7 @@ function TaskCounter() {
     } = React.useContext(taskContext)
     return(
         <h1>
+            Task Machine<br/>
             You've completed <span>{completedTasks}</span> of <span>{totalTasks}</span> tasks!
         </h1>
     );

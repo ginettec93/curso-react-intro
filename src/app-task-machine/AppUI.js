@@ -8,13 +8,17 @@ import { TasksError } from '../error-tasks/tasks-error';
 import { EmptyTasks } from '../empty-tasks/empty-tasks';
 import { CreateTaskButton } from '../task-counter/task-button';
 import { taskContext } from "../tasks-context/context";
+import { Modal } from "../modal/modal";
 
 function AppUI() {
     const {loading, 
         error,
         searchedTasks,
         completeTask,
-        deleteTask,} = React.useContext(taskContext);
+        deleteTask,
+        openModal,
+        setOpenModal,
+    } = React.useContext(taskContext);
 
         return (
     <>   
@@ -38,6 +42,12 @@ function AppUI() {
         </TaskList>
     
         <CreateTaskButton/>
+        
+        {openModal && (
+            <Modal>
+            Aca se crearan los tasks
+            </Modal>
+        )}
     </>);
 }
 export { AppUI };
