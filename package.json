@@ -29,10 +29,10 @@
       "last 1 safari version"
     ]
   },
-  "description": "¡Hola, Platzinauta!",
+  "description": "Task Machine",
   "main": "index.js",
   "devDependencies": {},
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
+  "keywords": ["React", "CSS"],
+  "author": "Ginette Carrizo <ginettecarrizo@gmail.com> ",
+  "license": "MIT"
 }
