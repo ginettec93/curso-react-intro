@@ -18,12 +18,12 @@ input {
     width: 200px;
     height: 30px;
     border-radius: 15px;
-    border: 1px solid #ffaacc;
+    border: 1px solid gray;
     text-align: center;
     opacity: 0.8;
 }
 input:hover {
-    border: 1px solid #ffaacc;
+    border: 1px solid #0000;
 }
 .Task_list {
     display: grid;
@@ -113,7 +113,23 @@ ul li {
     font-weight: bold;
     border: none;
     cursor: pointer;
+    box-shadow: 2px 6px 10px rgba(5, 4, 2, 0.16); 
+    z-index: 1;
 }
-.add_button:hover {
-    border: 1px solid #ffaacc;
+.Add_button:hover {
+    animation: rotate 1.5s ease-in-out;
+}
+@keyframes rotate {
+    0% {
+        transform: rotate(90deg);
+    }
+    40% {
+        transform: rotate(-90deg);
+    }
+    50% {
+        transform: rotate(-180deg);
+    }
+    100% {
+        transform: rotate(90deg);
+    }
 }

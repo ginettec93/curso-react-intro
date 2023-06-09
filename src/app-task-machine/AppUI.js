@@ -7,8 +7,9 @@ import { TasksLoading} from '../loading-tasks/loading-tasks';
 import { TasksError } from '../error-tasks/tasks-error';
 import { EmptyTasks } from '../empty-tasks/empty-tasks';
 import { CreateTaskButton } from '../task-counter/task-button';
-import { taskContext } from "../tasks-context/context";
 import { Modal } from "../modal/modal";
+import { TaskForm } from '../task-form/task-form'
+import { taskContext } from "../tasks-context/context";
 
 function AppUI() {
     const {loading, 
@@ -41,11 +42,12 @@ function AppUI() {
               
         </TaskList>
     
-        <CreateTaskButton/>
+        <CreateTaskButton 
+        setOpenModal={setOpenModal}/>
         
         {openModal && (
             <Modal>
-            Aca se crearan los tasks
+               <TaskForm/>
             </Modal>
         )}
     </>);

@@ -7,7 +7,7 @@
     position: absolute;
     top: 30px;
     left: 0px;
-    z-index: 3;
+    z-index: 1;
     animation: loader 2s linear forwards;
 }
 .loading_page div {

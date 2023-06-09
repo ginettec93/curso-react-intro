@@ -1,10 +1,14 @@
 import './task-counter.css';
-import { taskContext } from '../tasks-context/context';
 
-function CreateTaskButton() {
+function CreateTaskButton({setOpenModal}) {
     return (
         <button className="Add_button"
-        onClick={() => {}}>+</button>
+        onClick = {
+            () => {
+                setOpenModal(state => !state);
+            }
+        }
+        >+</button>
     );
 }
 export { CreateTaskButton };
