@@ -19,6 +19,7 @@ input {
     height: 30px;
     border-radius: 15px;
     border: 1px solid gray;
+    font-size: 12px;
     text-align: center;
     opacity: 0.8;
 }
@@ -29,6 +30,7 @@ input:hover {
     display: grid;
     justify-content: center;
     text-align: justify;
+    font-size: 12px;
 }
 ul li {
     list-style: none;

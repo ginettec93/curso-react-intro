@@ -11,7 +11,7 @@ function TaskProvider ({children}) {
         error,
       } = useLocalStorage('Tasks_V1', []);
       const [searchValue, setSearchValue] = React.useState('');
-      const [openModal, setOpenModal] = React.useState(true);
+      const [openModal, setOpenModal] = React.useState(false);
       
       const completedTasks = tasks.filter(task => !!task.completed).length;
       const totalTasks = tasks.length;
@@ -20,6 +20,12 @@ function TaskProvider ({children}) {
         const taskText = task.text.toLowerCase();
         const searchText = searchValue.toLowerCase();
         return taskText.includes(searchText);});
+
+        const addTask = (text) => {
+          const newTasks = [...tasks];
+          newTasks.push({text, completed: false,});
+          saveTasks(newTasks);
+        }
     
         const completeTask = (text) => {
         const newTasks = [...tasks];
@@ -49,6 +55,7 @@ function TaskProvider ({children}) {
             searchValue,
             setSearchValue,
             searchedTasks,
+            addTask,
             completeTask,
             deleteTask,
             openModal,
