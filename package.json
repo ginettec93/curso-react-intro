@@ -35,8 +35,14 @@
   "description": "Task Machine",
   "main": "index.js",
   "devDependencies": {},
-  "keywords": ["React", "CSS"],
-  "author": "Ginette Carrizo <ginettecarrizo@gmail.com> ",
-  "license": "MIT"
+  "keywords": [
+    "React",
+    "CSS"
+  ],
+  "author": "Ginette Carrizo <ginettecarrizo@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ginettec93"
+  }
 }
-  
