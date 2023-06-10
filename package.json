@@ -32,8 +32,6 @@
     ]
   },
   "homepage": "https://ginettec93.github.io/curso-react-intro/",
-  "description": "Task Machine",
-  "main": "index.js",
   "devDependencies": {},
   "keywords": [
     "React",
