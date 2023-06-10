@@ -11,7 +11,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
+    "deploy": "gh-pages -d src",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -32,7 +32,9 @@
     ]
   },
   "homepage": "https://ginettec93.github.io/curso-react-intro",
-  "devDependencies": {},
+  "devDependencies": {
+    "gh-pages": "^5.0.0"
+  },
   "keywords": [
     "React",
     "CSS"
