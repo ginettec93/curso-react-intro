@@ -29,6 +29,7 @@
       "last 1 safari version"
     ]
   },
+  "homepage": "file://wsl.localhost/Ubuntu/home/ginettec93/curso-react-intro/build/",
   "description": "Task Machine",
   "main": "index.js",
   "devDependencies": {},
@@ -36,3 +37,4 @@
   "author": "Ginette Carrizo <ginettecarrizo@gmail.com> ",
   "license": "MIT"
 }
+  
