@@ -40,9 +40,5 @@
     "CSS"
   ],
   "author": "Ginette Carrizo <ginettecarrizo@gmail.com>",
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/ginettec93"
-  }
+  "license": "MIT"
 }
